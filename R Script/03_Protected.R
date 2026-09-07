@@ -89,7 +89,6 @@ clean_data <- clean_data %>%
 iucn_cats <- c("Ia", "Ib", "II", "III", "IV", "V", "VI")
 
 # Filter valid IUCN categories only
-# Replace 'occ_in_protected' with your actual dataframe name if different
 occ_clean <- occ_in_protected %>%
   filter(IUCN_CAT %in% iucn_cats)
 
@@ -117,7 +116,7 @@ presence_matrix <- presence_absence_iucn %>%
     values_fill = "absent"
   )
 
-# Build presence dataframe: taxon x IUCN_CAT
+# Build presence dataframe
 iucn_presence_prot <- occ_in_protected %>%
   mutate(present = TRUE) %>%
   distinct(taxon, IUCN_CAT, present)
